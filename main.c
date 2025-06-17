@@ -1,5 +1,5 @@
 //**************************** Print a statement *******************************
-// Copyright (c) 2024 Trenser Technology Solutions
+// Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
 //
@@ -7,11 +7,13 @@
 // Summary : Print Hello,World
 // Note    : None
 // Author  : Surya Santhosh
-// Date    : 04/June/2025
+// Date    : 16/June/2025
 //
 //******************************************************************************
+
 //******************************* Include Files ********************************
 #include<stdio.h>
+
 //******************************* Local Types **********************************
 
 //***************************** Local Constants ********************************
@@ -21,14 +23,15 @@
 //****************************** Local Functions *******************************
 
 //******************************.mainFunction.**********************************
-// Purpose : Display Hellow,World.
+// Purpose : Display Hello,World.
 // Inputs  : none
 // Outputs : none
-// Return  : None
+// Return  : 0
 // Notes   : None
 //******************************************************************************
 int main()
 {
-    printf("Hellow,World");
+    printf("Hello,World");
+    return 0;
 }
 // EOF
