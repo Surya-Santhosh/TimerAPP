@@ -23,14 +23,14 @@
 
 //***************************** Local Variables ********************************
 static uint8 ucFlag;
-static uint32 cYear;
-static uint32 cMonth;
-static uint32 cHour;
-static uint32 cMiniute;
-static uint32 cSeconds;
-static uint32 cDay;
+static uint32 ulYear;
+static uint32 ulMonth;
+static uint32 ulHour;
+static uint32 ulMinute;
+static uint32 ulSeconds;
+static uint32 ulDay;
 static uint16 unIndex;
-static uint32 ucMonth[MONTH] = {THIRTYONE_DAYS, TWENTYEIGHT_DAYS, 
+static uint32 ulMonthName[MONTH] = {THIRTYONE_DAYS, TWENTYEIGHT_DAYS, 
     THIRTYONE_DAYS, THIRTY_DAYS, THIRTYONE_DAYS, THIRTY_DAYS, THIRTYONE_DAYS, 
     THIRTYONE_DAYS, THIRTY_DAYS, THIRTYONE_DAYS, THIRTY_DAYS, THIRTYONE_DAYS};
 
@@ -50,14 +50,14 @@ bool appTimerUTC(uint32 ululEpochUTC)
         return false;
     }
     ucFlag = ZERO;
-    cYear = ululEpochUTC / (SECONDS * SECONDS * HOURS * DAYS);
-    ululEpochUTC = ululEpochUTC - (cYear * (SECONDS * SECONDS * HOURS * DAYS));
-    cYear = cYear + UTC_YEAR;
+    ulYear = ululEpochUTC / (SECONDS * SECONDS * HOURS * DAYS);
+    ululEpochUTC = ululEpochUTC - (ulYear * (SECONDS * SECONDS * HOURS * DAYS));
+    ulYear = ulYear + UTC_YEAR;
 
-    cDay = ululEpochUTC / (SECONDS * SECONDS * HOURS);
-    ululEpochUTC = ululEpochUTC - (cDay * (SECONDS * SECONDS * HOURS));
+    ulDay = ululEpochUTC / (SECONDS * SECONDS * HOURS);
+    ululEpochUTC = ululEpochUTC - (ulDay * (SECONDS * SECONDS * HOURS));
 
-    for (unIndex = UTC_YEAR; unIndex <= cYear; unIndex++)
+    for (unIndex = UTC_YEAR; unIndex <= ulYear; unIndex++)
     {
         if ((unIndex % FOUR == ZERO && unIndex % HUNDRED != ZERO) || 
         (unIndex % FOUR * HUNDRED) == ZERO)
@@ -65,38 +65,38 @@ bool appTimerUTC(uint32 ululEpochUTC)
             ucFlag++;
         }
     }
-    cDay = cDay - ucFlag;
+    ulDay = ulDay - ucFlag;
     for (unIndex = ZERO; unIndex < MONTH; unIndex++)
     {
         if ((unIndex % FOUR == ZERO && unIndex % HUNDRED != ZERO) || 
         (unIndex % FOUR * HUNDRED) == ZERO)
         {
-            ucMonth[ONE] = APRIL_DAYS;
+            ulMonthName[ONE] = APRIL_DAYS;
         }
-        if (cDay > ucMonth[unIndex])
+        if (ulDay > ulMonthName[unIndex])
         {
-            cDay = cDay - ucMonth[unIndex];
+            ulDay = ulDay - ulMonthName[unIndex];
         }
         else
         {
-            cMonth = unIndex + ONE;
+            ulMonth = unIndex + ONE;
             break;
         }
     }
 
-    cHour = ululEpochUTC / (SECONDS * SECONDS);
+    ulHour = ululEpochUTC / (SECONDS * SECONDS);
     ululEpochUTC = ululEpochUTC % (SECONDS * SECONDS);
 
-    cMiniute = ululEpochUTC / (SECONDS);
+    ulMinute = ululEpochUTC / (SECONDS);
     ululEpochUTC = ululEpochUTC % (SECONDS);
 
-    cSeconds = ululEpochUTC;
+    ulSeconds = ululEpochUTC;
 
     printf("\n");
     printf("UTC (0:0)\n");
     printf("-----------------------\n");
-    printf("Time  : %02d:%02d:%02d ",cHour,cMiniute,cSeconds);
-    if (MONTH <= cHour)
+    printf("Time  : %02ld:%02ld:%02ld ",ulHour,ulMinute,ulSeconds);
+    if (MONTH <= ulHour)
     {
         printf("PM");
     }
@@ -105,7 +105,7 @@ bool appTimerUTC(uint32 ululEpochUTC)
         printf("AM");
     }
 
-    printf("\nDate  : %02d/%02d/%02d\n",cDay,cMonth,cYear);
+    printf("\nDate  : %02ld/%02ld/%02ld\n",ulDay,ulMonth,ulYear);
     printf("Epoch  : %d\n",ulEpoch);
 
     return true;
@@ -125,14 +125,14 @@ bool appTimerIST(uint32 ulEpochIST)
         return false;
     }
     ucFlag = ZERO;
-    cYear = ulEpochIST / (SECONDS * SECONDS * HOURS * DAYS);
-    ulEpochIST = ulEpochIST - (cYear * (SECONDS * SECONDS * HOURS * DAYS));
-    cYear = cYear + UTC_YEAR;
+    ulYear = ulEpochIST / (SECONDS * SECONDS * HOURS * DAYS);
+    ulEpochIST = ulEpochIST - (ulYear * (SECONDS * SECONDS * HOURS * DAYS));
+    ulYear = ulYear + UTC_YEAR;
 
-    cDay = ulEpochIST / (SECONDS * SECONDS * HOURS);
-    ulEpochIST = ulEpochIST - (cDay * (SECONDS * SECONDS * HOURS));
+    ulDay = ulEpochIST / (SECONDS * SECONDS * HOURS);
+    ulEpochIST = ulEpochIST - (ulDay * (SECONDS * SECONDS * HOURS));
 
-    for (unIndex = UTC_YEAR; unIndex <= cYear; unIndex++)
+    for (unIndex = UTC_YEAR; unIndex <= ulYear; unIndex++)
     {
         if ((unIndex % FOUR == ZERO && unIndex % HUNDRED != ZERO) || 
         (unIndex % FOUR * HUNDRED) == ZERO)
@@ -140,40 +140,40 @@ bool appTimerIST(uint32 ulEpochIST)
             ucFlag++;
         }
     }
-    cDay = cDay - ucFlag;
+    ulDay = ulDay - ucFlag;
     for (unIndex = ZERO; unIndex < MONTH; unIndex++)
     {
         if ((unIndex % FOUR == ZERO && unIndex % HUNDRED != ZERO) || 
         (unIndex % FOUR * HUNDRED) == ZERO)
         {
-            ucMonth[ONE] = APRIL_DAYS;
+            ulMonthName[ONE] = APRIL_DAYS;
         }
-        if (cDay > ucMonth[unIndex])
+        if (ulDay > ulMonthName[unIndex])
         {
-            cDay = cDay - ucMonth[unIndex];
+            ulDay = ulDay - ulMonthName[unIndex];
         }
         else
         {
-            cMonth = unIndex + ONE;
+            ulMonth = unIndex + ONE;
             break;
         }
     }
     
     ulEpochIST = ulEpochIST % (SECONDS * SECONDS * HOURS);
 
-    cHour = ulEpochIST / (SECONDS * SECONDS);
+    ulHour = ulEpochIST / (SECONDS * SECONDS);
     ulEpochIST = ulEpochIST % (SECONDS * SECONDS);
 
-    cMiniute = ulEpochIST / (SECONDS);
+    ulMinute = ulEpochIST / (SECONDS);
     ulEpochIST = ulEpochIST % (SECONDS);
 
-    cSeconds = ulEpochIST;
+    ulSeconds = ulEpochIST;
 
     printf("\n");
     printf("IST (5:30)\n");
     printf("-----------------------\n");
-    printf("Time  : %02d:%02d:%02d ",cHour,cMiniute,cSeconds);
-    if (MONTH <= cHour)
+    printf("Time  : %02ld:%02ld:%02ld ",ulHour,ulMinute,ulSeconds);
+    if (MONTH <= ulHour)
     {
         printf("PM");
     }
@@ -182,7 +182,7 @@ bool appTimerIST(uint32 ulEpochIST)
         printf("AM");
     }
 
-    printf("\nDate  : %02d/%02d/%02d\n",cDay,cMonth,cYear);
+    printf("\nDate  : %02ld/%02ld/%02ld\n",ulDay,ulMonth,ulYear);
     
     return true;
 }
@@ -201,14 +201,14 @@ bool appTimerPST(uint32 ulEpochPST)
         return false;
     }
     ucFlag = ZERO;
-    cYear = ulEpochPST / (SECONDS * SECONDS * HOURS * DAYS);
-    ulEpochPST = ulEpochPST - (cYear * (SECONDS * SECONDS * HOURS * DAYS));
-    cYear = cYear + UTC_YEAR;
+    ulYear = ulEpochPST / (SECONDS * SECONDS * HOURS * DAYS);
+    ulEpochPST = ulEpochPST - (ulYear * (SECONDS * SECONDS * HOURS * DAYS));
+    ulYear = ulYear + UTC_YEAR;
 
-    cDay = ulEpochPST / (SECONDS * SECONDS * HOURS);
-    ulEpochPST = ulEpochPST - (cDay * (SECONDS * SECONDS * HOURS));
+    ulDay = ulEpochPST / (SECONDS * SECONDS * HOURS);
+    ulEpochPST = ulEpochPST - (ulDay * (SECONDS * SECONDS * HOURS));
 
-    for (unIndex = UTC_YEAR; unIndex <= cYear; unIndex++)
+    for (unIndex = UTC_YEAR; unIndex <= ulYear; unIndex++)
     {
         if ((unIndex % FOUR == ZERO && unIndex % HUNDRED != ZERO) || 
         (unIndex % FOUR * HUNDRED) == ZERO)
@@ -217,40 +217,40 @@ bool appTimerPST(uint32 ulEpochPST)
         }
     }
 
-    cDay = cDay - ucFlag;
+    ulDay = ulDay - ucFlag;
     for (unIndex = ZERO; unIndex < MONTH; unIndex++)
     {
         if ((unIndex % FOUR == ZERO && unIndex % HUNDRED != ZERO) || 
         (unIndex % FOUR * HUNDRED) == ZERO)
         {
-            ucMonth[ONE] = APRIL_DAYS;
+            ulMonthName[ONE] = APRIL_DAYS;
         }
-        if (cDay > ucMonth[unIndex])
+        if (ulDay > ulMonthName[unIndex])
         {
-            cDay = cDay - ucMonth[unIndex];
+            ulDay = ulDay - ulMonthName[unIndex];
         }
         else
         {
-            cMonth = unIndex + ONE;
+            ulMonth = unIndex + ONE;
             break;
         }
     }
 
     ulEpochPST = ulEpochPST % (SECONDS * SECONDS * HOURS);
 
-    cHour = ulEpochPST / (SECONDS * SECONDS);
+    ulHour = ulEpochPST / (SECONDS * SECONDS);
     ulEpochPST = ulEpochPST % (SECONDS * SECONDS);
 
-    cMiniute = ulEpochPST / (SECONDS);
+    ulMinute = ulEpochPST / (SECONDS);
     ulEpochPST = ulEpochPST % (SECONDS);
 
-    cSeconds = ulEpochPST;
+    ulSeconds = ulEpochPST;
 
     printf("\n");
     printf("PST (7:00)\n");
     printf("-----------------------\n");
-    printf("Time  : %02d:%02d:%02d ",cHour,cMiniute,cSeconds);
-    if (MONTH <= cHour)
+    printf("Time  : %02ld:%02ld:%02ld ",ulHour,ulMinute,ulSeconds);
+    if (MONTH <= ulHour)
     {
         printf("PM");
     }
@@ -259,7 +259,7 @@ bool appTimerPST(uint32 ulEpochPST)
         printf("AM");
     }
 
-    printf("\nDate  : %02d/%02d/%02d\n",cDay,cMonth,cYear);
+    printf("\nDate  : %02ld/%02ld/%02ld\n",ulDay,ulMonth,ulYear);
     
     return true;
 }
