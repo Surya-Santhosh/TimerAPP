@@ -14,7 +14,7 @@
 //******************************* Include Files ********************************
 #include<stdio.h>
 #include<time.h>
-#include<windows.h>
+#include<unistd.h>
 #include"appTimer.h"
 
 //******************************* Local Types **********************************
@@ -58,7 +58,7 @@ int main()
         ulEpochPST = ulEpoch - TIME_DIFF_PST;
         appTimerPST(ulEpochPST);
 
-        Sleep(THOUSAND);
+        sleep(THOUSAND);
     }
     return 0;
 }
