@@ -37,14 +37,10 @@
 #define TWENTYEIGHT_DAYS   (28)
 
 //***************************** Global Variables ******************************* 
-uint32 ulEpoch;
-uint32 ulEpochPST;
-uint32 ulEpochIST;
-uint32 ulEpochUTC;
 
 //**************************** Forward Declarations **************************** 
 
-bool appTimerUTC(uint32 ulEpochUTC);
+bool appTimerUTC(uint32 ulEpochUTC,uint32 ulEpoch);
 bool appTimerIST(uint32 ulEpochIST);
 bool appTimerPST(uint32 ulEpochPST);
 

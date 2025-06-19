@@ -14,7 +14,7 @@
 //******************************* Include Files ********************************
 #include<stdio.h>
 #include<time.h>
-#include<unistd.h>
+#include<windows.h>
 #include"appTimer.h"
 
 //******************************* Local Types **********************************
@@ -34,6 +34,10 @@
 //******************************************************************************
 int main()
 {
+    uint32 ulEpoch;
+    uint32 ulEpochPST;
+    uint32 ulEpochIST;
+    uint32 ulEpochUTC;
     while (ONE)
     {
         time_t tTime;
@@ -44,7 +48,7 @@ int main()
 
         //UTC
         ulEpochUTC = ulEpoch;
-        appTimerUTC(ulEpochUTC);
+        appTimerUTC(ulEpochUTC, ulEpoch);
 
         //IST
         ulEpochIST = ulEpoch + TIME_DIFF_IST;
@@ -54,7 +58,7 @@ int main()
         ulEpochPST = ulEpoch - TIME_DIFF_PST;
         appTimerPST(ulEpochPST);
 
-        sleep(THOUSAND);
+        Sleep(THOUSAND);
     }
     return 0;
 }

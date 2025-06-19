@@ -43,19 +43,19 @@ static uint32 ulMonthName[MONTH] = {THIRTYONE_DAYS, TWENTYEIGHT_DAYS,
 // Return  : true
 // Notes   : None
 //****************************************************************************** 
-bool appTimerUTC(uint32 ululEpochUTC)
+bool appTimerUTC(uint32 ulEpochUTC,uint32 ulEpoch)
 {
-    if (ZERO == ululEpochUTC)
+    if (ZERO == ulEpochUTC)
     {
         return false;
     }
     ucFlag = ZERO;
-    ulYear = ululEpochUTC / (SECONDS * SECONDS * HOURS * DAYS);
-    ululEpochUTC = ululEpochUTC - (ulYear * (SECONDS * SECONDS * HOURS * DAYS));
+    ulYear = ulEpochUTC / (SECONDS * SECONDS * HOURS * DAYS);
+    ulEpochUTC = ulEpochUTC - (ulYear * (SECONDS * SECONDS * HOURS * DAYS));
     ulYear = ulYear + UTC_YEAR;
 
-    ulDay = ululEpochUTC / (SECONDS * SECONDS * HOURS);
-    ululEpochUTC = ululEpochUTC - (ulDay * (SECONDS * SECONDS * HOURS));
+    ulDay = ulEpochUTC / (SECONDS * SECONDS * HOURS);
+    ulEpochUTC = ulEpochUTC - (ulDay * (SECONDS * SECONDS * HOURS));
 
     for (unIndex = UTC_YEAR; unIndex <= ulYear; unIndex++)
     {
@@ -84,13 +84,13 @@ bool appTimerUTC(uint32 ululEpochUTC)
         }
     }
 
-    ulHour = ululEpochUTC / (SECONDS * SECONDS);
-    ululEpochUTC = ululEpochUTC % (SECONDS * SECONDS);
+    ulHour = ulEpochUTC / (SECONDS * SECONDS);
+    ulEpochUTC = ulEpochUTC % (SECONDS * SECONDS);
 
-    ulMinute = ululEpochUTC / (SECONDS);
-    ululEpochUTC = ululEpochUTC % (SECONDS);
+    ulMinute = ulEpochUTC / (SECONDS);
+    ulEpochUTC = ulEpochUTC % (SECONDS);
 
-    ulSeconds = ululEpochUTC;
+    ulSeconds = ulEpochUTC;
 
     printf("\n");
     printf("UTC (0:0)\n");
@@ -120,7 +120,7 @@ bool appTimerUTC(uint32 ululEpochUTC)
 //****************************************************************************** 
 bool appTimerIST(uint32 ulEpochIST)
 {
-    if (ZERO == ulEpochPST)
+    if (ZERO == ulEpochIST)
     {
         return false;
     }
