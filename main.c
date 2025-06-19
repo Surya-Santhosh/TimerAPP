@@ -1,18 +1,21 @@
-//******************************* Hello,World **********************************
+//******************************* TimerApp *************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
 //
 // File    : main.c
-// Summary : Print Hello,World
+// Summary : Display date and time in UTC,IST,PST.
 // Note    : None
 // Author  : Surya Santhosh
-// Date    : 16/June/2025
+// Day     : 19/June/2025
 //
 //******************************************************************************
 
 //******************************* Include Files ********************************
 #include<stdio.h>
+#include<time.h>
+#include<windows.h>
+#include"appTimer.h"
 
 //******************************* Local Types **********************************
 
@@ -23,7 +26,7 @@
 //****************************** Local Functions *******************************
 
 //******************************.mainFunction.**********************************
-// Purpose : Display Hello,World.
+// Purpose : Print date and time in UTC,IST,PST.
 // Inputs  : none
 // Outputs : none
 // Return  : 0
@@ -31,8 +34,29 @@
 //******************************************************************************
 int main()
 {
-    printf("Hello,World");
+    while (ONE)
+    {
+        time_t tTime;
+        struct tm *CurrentTime;
 
+        ulEpoch = time(&tTime);
+        CurrentTime = localtime(&tTime);
+
+        //UTC
+        ulEpochUTC = ulEpoch;
+        appTimerUTC(ulEpochUTC);
+
+        //IST
+        ulEpochIST = ulEpoch + TIME_DIFF_IST;
+        appTimerIST(ulEpochIST);
+
+        //PST
+        ulEpochPST = ulEpoch - TIME_DIFF_PST;
+        appTimerPST(ulEpochPST);
+
+        Sleep(THOUSAND);
+    }
     return 0;
 }
+
 // EOF

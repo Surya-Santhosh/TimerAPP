@@ -1,1 +1,1 @@
-Program to print Hello,World.
+Program to display date and time in UTC,IST,PST in every seconds.
