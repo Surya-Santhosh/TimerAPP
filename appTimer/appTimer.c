@@ -106,7 +106,7 @@ bool appTimerUTC(uint32 ululEpochUTC)
     }
 
     printf("\nDate  : %02ld/%02ld/%02ld\n",ulDay,ulMonth,ulYear);
-    printf("Epoch  : %d\n",ulEpoch);
+    printf("Epoch  : %ld\n",ulEpoch);
 
     return true;
 }
