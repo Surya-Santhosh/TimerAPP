@@ -14,8 +14,10 @@
 //******************************* Include Files ********************************
 #include<stdio.h>
 #include<time.h>
+#include<stdbool.h>
 #include<unistd.h>
 #include"appTimer.h"
+#include"common.h"
 
 //******************************* Local Types **********************************
 

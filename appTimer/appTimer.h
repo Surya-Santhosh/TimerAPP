@@ -11,7 +11,6 @@
 #define _APPTIMER_H_
 
 //******************************* Include Files ********************************
-#include<stdbool.h>
 #include"../common.h"
 
 //******************************* Global Types ********************************* 
@@ -27,7 +26,7 @@
 #define FOUR               (4)
 #define HUNDRED            (100)
 #define TWO                (2)
-#define ONE                (2)
+#define ONE                (1)
 #define APRIL_DAYS         (29)
 #define TIME_DIFF_IST      (19800)
 #define TIME_DIFF_PST      (25200)

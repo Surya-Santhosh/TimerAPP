@@ -140,7 +140,7 @@ bool appTimerIST(uint32 ulEpochIST)
             ucFlag++;
         }
     }
-    ulDay = ulDay - ucFlag;
+    ulDay = ulDay - ucFlag + TWO;
     for (unIndex = ZERO; unIndex < MONTH; unIndex++)
     {
         if ((unIndex % FOUR == ZERO && unIndex % HUNDRED != ZERO) || 
