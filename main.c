@@ -39,9 +39,9 @@ int main()
     uint32 ulEpochUTC = ZERO;
     while (ONE)
     {
-        time_t tTime;
+        time_t ulTime;
 
-        ulEpoch = time(&tTime);
+        ulEpoch = time(&ulTime);
 
         //UTC
         ulEpochUTC = ulEpoch;
@@ -65,7 +65,7 @@ int main()
         appTimer(ulEpochPST);
 
         sleep(ONE);
-        
+
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
     }
