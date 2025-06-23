@@ -1,23 +1,20 @@
-//******************************* TimerApp *************************************
+//******************************* AppTimer *************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
-//
 // File    : main.c
 // Summary : Display date and time in UTC,IST,PST.
 // Note    : None
 // Author  : Surya Santhosh
 // Day     : 19/June/2025
-//
 //******************************************************************************
 
 //******************************* Include Files ********************************
-#include<stdio.h>
-#include<time.h>
-#include<stdbool.h>
-#include<unistd.h>
-#include"appTimer.h"
-#include"common.h"
+#include <stdio.h>
+#include <time.h>
+#include <unistd.h>
+#include "appTimer.h"
+#include "common.h"
 
 //******************************* Local Types **********************************
 
@@ -36,32 +33,43 @@
 //******************************************************************************
 int main()
 {
-    uint32 ulEpoch;
-    uint32 ulEpochPST;
-    uint32 ulEpochIST;
-    uint32 ulEpochUTC;
+    uint32 ulEpoch = ZERO;
+    uint32 ulEpochPST = ZERO;
+    uint32 ulEpochIST = ZERO;
+    uint32 ulEpochUTC = ZERO;
     while (ONE)
     {
         time_t tTime;
-        struct tm *CurrentTime;
 
         ulEpoch = time(&tTime);
-        CurrentTime = localtime(&tTime);
 
         //UTC
         ulEpochUTC = ulEpoch;
-        appTimerUTC(ulEpochUTC, ulEpoch);
+        printf("UTC (0:0)\n");
+        printf("-----------------------\n");
+        appTimer(ulEpochUTC);
+        printf("Epoch  : %ld\n",ulEpoch);
 
         //IST
+        printf("\n");
+        printf("IST (+5:30)\n");
+        printf("-----------------------\n");
         ulEpochIST = ulEpoch + TIME_DIFF_IST;
-        appTimerIST(ulEpochIST);
+        appTimer(ulEpochIST);
 
         //PST
         ulEpochPST = ulEpoch - TIME_DIFF_PST;
-        appTimerPST(ulEpochPST);
+        printf("\n");
+        printf("PST (-7:00)\n");
+        printf("-----------------------\n");
+        appTimer(ulEpochPST);
 
-        sleep(THOUSAND);
+        sleep(ONE);
+        
+        printf("\x1b[H"); // Move Cursor to top-left
+        printf("\x1b[J"); // clear screen
     }
+
     return 0;
 }
 
