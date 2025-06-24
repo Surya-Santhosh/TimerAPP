@@ -32,14 +32,14 @@
 //****************************************************************************** 
 bool appTimer(uint32 ulEpoch)
 {
-    uint32 ulYear = 0;
-    uint32 ulMonth = 0;
-    uint32 ulHour = 0;
-    uint32 ulMinute = 0;
+    uint32 ulYear    = 0;
+    uint32 ulMonth   = 0;
+    uint32 ulHour    = 0;
+    uint32 ulMinute  = 0;
     uint32 ulSeconds = 0;
-    uint32 ulDay = 0;
-    uint16 unIndex = 0;
-    bool blResult = true;
+    uint32 ulDay     = 0;
+    uint16 unIndex   = 0;
+    bool blResult    = true;
     
     if (0 == ulEpoch)
     {
@@ -49,7 +49,7 @@ bool appTimer(uint32 ulEpoch)
     {
         ulYear = ulEpoch / (SECONDS * MINUTES * DAY_HOURS * TOTAL_DAYS_IN_YEAR);
         ulEpoch -= (ulYear * 
-            (SECONDS * MINUTES * DAY_HOURS * TOTAL_DAYS_IN_YEAR));
+                   (SECONDS * MINUTES * DAY_HOURS * TOTAL_DAYS_IN_YEAR));
         // Add 1970 to get the actual year.
         ulYear += UNIX_EPOCH_YEAR; 
         ulDay = ulEpoch / (SECONDS * MINUTES * DAY_HOURS);
@@ -59,8 +59,8 @@ bool appTimer(uint32 ulEpoch)
         for (unIndex = UNIX_EPOCH_YEAR; unIndex <= ulYear; unIndex++)
         {
             if (((0 == (unIndex % LEAPYEAR_CHECK_4)) && 
-            (0 != (unIndex % LEAPYEAR_CHECK_100))) || 
-            (0 == (unIndex % LEAPYEAR_CHECK_400)))
+               (0 != (unIndex % LEAPYEAR_CHECK_100))) || 
+               (0 == (unIndex % LEAPYEAR_CHECK_400)))
             {
                 ulDay--;
             }
