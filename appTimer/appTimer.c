@@ -10,6 +10,7 @@
 // Date    : 19/JUN/2024
 //
 //******************************************************************************
+
 //******************************* Include Files ********************************
 #include "common.h"
 #include "appTimer.h"
@@ -40,58 +41,58 @@ bool appTimer(uint32 ulEpoch)
     uint16 unIndex = 0;
     bool blResult = true;
     
-    if (ZERO == ulEpoch)
+    if (0 == ulEpoch)
     {
         blResult = false;
     }
     else
     {
-        ulYear = ulEpoch / (SECONDS * MINUTES * HOURS * DAYS);
-        ulEpoch -= (ulYear * (SECONDS * MINUTES * HOURS * DAYS));
-        ulYear += UTC_YEAR;
-        ulDay = ulEpoch / (SECONDS * MINUTES * HOURS);
-        ulEpoch -= (ulDay * (SECONDS * MINUTES * HOURS));
+        ulYear = ulEpoch / (SECONDS * MINUTES * DAY_HOURS * TOTAL_DAYS_IN_YEAR);
+        ulEpoch -= (ulYear * 
+            (SECONDS * MINUTES * DAY_HOURS * TOTAL_DAYS_IN_YEAR));
+        // Add 1970 to get the actual year.
+        ulYear += UNIX_EPOCH_YEAR; 
+        ulDay = ulEpoch / (SECONDS * MINUTES * DAY_HOURS);
+        ulEpoch -= (ulDay * (SECONDS * MINUTES * DAY_HOURS));
 
         // Decrement the number of days as per leap year count. 
-        for (unIndex = UTC_YEAR; unIndex <= ulYear; unIndex++)
+        for (unIndex = UNIX_EPOCH_YEAR; unIndex <= ulYear; unIndex++)
         {
-            if (((ZERO == (unIndex % LEAPYEAR_CHECK_FOUR)) && 
-            (ZERO != (unIndex % LEAPYEAR_CHECK_HUNDRED))) || 
-            (ZERO == (unIndex % LEAPYEAR_CHECK_FOUR * LEAPYEAR_CHECK_HUNDRED)))
+            if (((0 == (unIndex % LEAPYEAR_CHECK_4)) && 
+            (0 != (unIndex % LEAPYEAR_CHECK_100))) || 
+            (0 == (unIndex % LEAPYEAR_CHECK_400)))
             {
                 ulDay--;
             }
         }
 
-        //Adding 1 because days start from 0 but in calender days start from 1.
-        ulDay += ONE; 
+        // Increment by 1 because calender days start from 1 january.
+        ulDay ++; 
 
         // Decrement the number of days as per number of days in each month.
-        for (unIndex = ZERO; unIndex < MONTH; unIndex++)
+        for (unIndex = MONTH_START; unIndex <= MONTH; unIndex++)
         {
-            if (HALFYEAR_MONTH <= unIndex)
+            if (EIGHTH_MONTH <= unIndex)
             {
-                if ((unIndex % EVEN) == 0)
+                if (0 == (unIndex % EVEN_NUMBER))
                 {
-                    if (ulDay > THIRTYONE_DAYS)
+                    if (THIRTY_DAYS < ulDay)
                     {
                         ulDay -= THIRTY_DAYS;
                     }
                     else
                     {
-                        ulMonth = unIndex;
                         break;
                     }
                 }
                 else
                 {
-                    if (ulDay > THIRTYONE_DAYS)
+                    if (THIRTYONE_DAYS < ulDay)
                     {
                         ulDay -= THIRTYONE_DAYS;
                     }
                     else
                     {
-                        ulMonth = unIndex;
                         break;
                     }
                 } 
@@ -100,44 +101,41 @@ bool appTimer(uint32 ulEpoch)
             {
                 if (SECOND_MONTH == unIndex)
                 {
-                    if (ulDay > TWENTYEIGHT_DAYS)
+                    if (TWENTYEIGHT_DAYS < ulDay)
                     {
                         ulDay -= TWENTYEIGHT_DAYS;
                     }
                     else
                     {
-                        ulMonth = unIndex;
                         break;
                     }
                 }
-                else if ((unIndex % EVEN) == 0)
+                else if (0 == (unIndex % EVEN_NUMBER))
                 {
-                    if (ulDay > THIRTYONE_DAYS)
-                    {
-                        ulDay -= THIRTYONE_DAYS;
-                    }
-                    else
-                    {
-                        ulMonth = unIndex;
-                        break;
-                    }
-                }
-                else
-                {
-                    if (ulDay > THIRTYONE_DAYS)
+                    if (THIRTY_DAYS < ulDay)
                     {
                         ulDay -= THIRTY_DAYS;
                     }
                     else
                     {
-                        ulMonth = unIndex;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (THIRTYONE_DAYS < ulDay)
+                    {
+                        ulDay -= THIRTYONE_DAYS;
+                    }
+                    else
+                    {
                         break;
                     }
                 }
             }
         }
 
-        ulMonth += ONE;
+        ulMonth = unIndex;
         ulHour = ulEpoch / (SECONDS * MINUTES);
         ulEpoch %= (SECONDS * MINUTES);
         ulMinute = ulEpoch / (SECONDS);
@@ -146,7 +144,7 @@ bool appTimer(uint32 ulEpoch)
 
         printf("Time  : %02ld:%02ld:%02ld ",ulHour,ulMinute,ulSeconds);
 
-        if (HALFDAY_HOUR <= ulHour)
+        if (DAY_HOURS <= ulHour)
         {
             printf("PM");
         }
