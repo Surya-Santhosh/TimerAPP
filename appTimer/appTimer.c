@@ -31,14 +31,14 @@
 //****************************************************************************** 
 bool appTimer(uint32 ulEpoch)
 {
-    uint32 ulYear = ZERO;
-    uint32 ulMonth = ZERO;
-    uint32 ulHour = ZERO;
-    uint32 ulMinute = ZERO;
-    uint32 ulSeconds = ZERO;
-    uint32 ulDay = ZERO;
-    uint16 unIndex = ZERO;
-    bool blResult;
+    uint32 ulYear = 0;
+    uint32 ulMonth = 0;
+    uint32 ulHour = 0;
+    uint32 ulMinute = 0;
+    uint32 ulSeconds = 0;
+    uint32 ulDay = 0;
+    uint16 unIndex = 0;
+    bool blResult = true;
     
     if (ZERO == ulEpoch)
     {
@@ -52,6 +52,7 @@ bool appTimer(uint32 ulEpoch)
         ulDay = ulEpoch / (SECONDS * MINUTES * HOURS);
         ulEpoch -= (ulDay * (SECONDS * MINUTES * HOURS));
 
+        // Decrement the number of days as per leap year count. 
         for (unIndex = UTC_YEAR; unIndex <= ulYear; unIndex++)
         {
             if (((ZERO == (unIndex % LEAPYEAR_CHECK_FOUR)) && 
@@ -61,18 +62,41 @@ bool appTimer(uint32 ulEpoch)
                 ulDay--;
             }
         }
-        ulDay += ONE;
-        
-        if (((ZERO == (ulYear % LEAPYEAR_CHECK_FOUR)) && 
-        (ZERO != (ulYear % LEAPYEAR_CHECK_HUNDRED))) || 
-        (ZERO == (ulYear % LEAPYEAR_CHECK_FOUR * LEAPYEAR_CHECK_HUNDRED)))
-        {
-            ulDay--;
-        }
 
+        //Adding 1 because days start from 0 but in calender days start from 1.
+        ulDay += ONE; 
+
+        // Decrement the number of days as per number of days in each month.
         for (unIndex = ZERO; unIndex < MONTH; unIndex++)
         {
             if (HALFYEAR_MONTH <= unIndex)
+            {
+                if ((unIndex % EVEN) == 0)
+                {
+                    if (ulDay > THIRTYONE_DAYS)
+                    {
+                        ulDay -= THIRTY_DAYS;
+                    }
+                    else
+                    {
+                        ulMonth = unIndex;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (ulDay > THIRTYONE_DAYS)
+                    {
+                        ulDay -= THIRTYONE_DAYS;
+                    }
+                    else
+                    {
+                        ulMonth = unIndex;
+                        break;
+                    }
+                } 
+            }
+            else
             {
                 if (SECOND_MONTH == unIndex)
                 {
@@ -111,35 +135,8 @@ bool appTimer(uint32 ulEpoch)
                     }
                 }
             }
-            else
-            {
-                if ((unIndex % EVEN) == 0)
-                {
-                    if (ulDay > THIRTYONE_DAYS)
-                    {
-                        ulDay -= THIRTY_DAYS;
-                    }
-                    else
-                    {
-                        ulMonth = unIndex;
-                        break;
-                    }
-                }
-                else
-                {
-                    if (ulDay > THIRTYONE_DAYS)
-                    {
-                        ulDay -= THIRTYONE_DAYS;
-                    }
-                    else
-                    {
-                        ulMonth = unIndex;
-                        break;
-                    }
-                } 
-            }
         }
-        ulDay += ONE;
+
         ulMonth += ONE;
         ulHour = ulEpoch / (SECONDS * MINUTES);
         ulEpoch %= (SECONDS * MINUTES);
@@ -159,6 +156,7 @@ bool appTimer(uint32 ulEpoch)
         }
 
         printf("\nDate  : %02ld/%02ld/%02ld\n",ulDay,ulMonth,ulYear);
+
         blResult = true;
     }
 

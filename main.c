@@ -33,10 +33,10 @@
 //******************************************************************************
 int main()
 {
-    uint32 ulEpoch = ZERO;
-    uint32 ulEpochPST = ZERO;
-    uint32 ulEpochIST = ZERO;
-    uint32 ulEpochUTC = ZERO;
+    uint32 ulEpoch = 0;
+    uint32 ulEpochPST = 0;
+    uint32 ulEpochIST = 0;
+    uint32 ulEpochUTC = 0;
     while (ONE)
     {
         time_t ulTime;
