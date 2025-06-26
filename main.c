@@ -84,9 +84,10 @@ int main()
         }
 
         sleep(1);
-
+        
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
+
     }
 
     return 0;
