@@ -55,7 +55,7 @@ int main()
             printf("Epoch Time is Zero.");
         }
         
-        printf("Epoch  : %ld\n",ulEpoch);
+        printf("Epoch  : %lu\n",ulEpoch);
 
         //IST
         printf("\n");
