@@ -50,7 +50,7 @@ int main()
         printf("UTC (0:0)\n");
         printf("-----------------------\n");
 
-        if (appTimer(ulEpochUTC) == false)
+        if (false == appTimer(ulEpochUTC))
         {
             printf("Epoch Time is Zero.");
         }
