@@ -1,10 +1,10 @@
-//******************************** appTimer ************************************
+//******************************** AppTimer ************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
 // File    : appTimer.c
 // Summary : Display date and time in UTC,IST,PST.
-// Note    : appTimer.h, common.h are included.
+// Note    : None
 // Author  : Surya Santhosh
 // Date    : 19/JUN/2024
 //******************************************************************************
@@ -217,7 +217,6 @@ static bool AppTimerDisplayTimeDate(uint32 ulEpoch)
         printf("\nDate  : %02lu/%02lu/%02lu\n",ulDay,ulMonth,ulYear);
 
         blResult = true;
-
     }
 
     return blResult;
