@@ -34,7 +34,7 @@ bool AppTimer(uint32 ulEpoch)
     uint32 ulEpochPST = 0;
     uint32 ulEpochIST = 0;
     uint32 ulEpochUTC = 0;
-    bool blResult    = true;
+    bool blResult     = true;
 
     if (0 == ulEpoch)
     {
@@ -47,12 +47,12 @@ bool AppTimer(uint32 ulEpoch)
         printf("UTC (0:0)\n");
         printf("-----------------------\n");
 
-        if (AppTimerDisplayTimeDate(ulEpochUTC) == false)
+        if (false == AppTimerDisplayTimeDate(ulEpochUTC))
         {
             printf("Epoch Time is Zero.");
         }
         
-        printf("Epoch  : %ld\n",ulEpoch);
+        printf("Epoch  : %lu\n",ulEpoch);
 
         //IST
         printf("\n");
@@ -61,7 +61,7 @@ bool AppTimer(uint32 ulEpoch)
 
         ulEpochIST = ulEpoch + TIME_DIFF_IST;
 
-        if (AppTimerDisplayTimeDate(ulEpochIST) == false)
+        if (false == AppTimerDisplayTimeDate(ulEpochIST))
         {
             printf("Epoch Time is Zero.");
         }
@@ -73,10 +73,11 @@ bool AppTimer(uint32 ulEpoch)
         printf("PST (-7:00)\n");
         printf("-----------------------\n");
 
-        if (AppTimerDisplayTimeDate(ulEpochPST) == false)
+        if (false == AppTimerDisplayTimeDate(ulEpochPST))
         {
             printf("Epoch Time is Zero.");
         }
+
         blResult = true;
     }
 
@@ -127,7 +128,7 @@ static bool AppTimerDisplayTimeDate(uint32 ulEpoch)
         }
 
         // Increment by 1 because calender days start from 1 january.
-        ulDay ++; 
+        ulDay++; 
 
         // Decrement the number of days as per number of days in each month.
         for (unIndex = MONTH_START; unIndex <= MONTH; unIndex++)
@@ -202,7 +203,7 @@ static bool AppTimerDisplayTimeDate(uint32 ulEpoch)
         ulEpoch %= (SECONDS);
         ulSeconds = ulEpoch;
 
-        printf("Time  : %02ld:%02ld:%02ld ",ulHour,ulMinute,ulSeconds);
+        printf("Time  : %02lu:%02lu:%02lu ",ulHour,ulMinute,ulSeconds);
 
         if (DAY_HOURS <= ulHour)
         {
@@ -213,7 +214,7 @@ static bool AppTimerDisplayTimeDate(uint32 ulEpoch)
             printf("AM");
         }
 
-        printf("\nDate  : %02ld/%02ld/%02ld\n",ulDay,ulMonth,ulYear);
+        printf("\nDate  : %02lu/%02lu/%02lu\n",ulDay,ulMonth,ulYear);
 
         blResult = true;
 

@@ -42,14 +42,14 @@ int main()
         ulEpoch = time(&ulTime);
 
         // Print date and time in UTC,IST,PST. 
-        if (AppTimer(ulEpoch) == false)
+        if (false == AppTimer(ulEpoch))
         {
             printf("Epoch Time is Zero.");
         }
 
         printf("\nLED ON\n");
 
-        sleep(5);
+        sleep(1);
         
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
@@ -57,14 +57,14 @@ int main()
         ulEpoch = time(&ulTime);
 
         // Print date and time in UTC,IST,PST. 
-        if (AppTimer(ulEpoch) == false)
+        if (false == AppTimer(ulEpoch))
         {
             printf("Epoch Time is Zero.");
         }
 
         printf("\nLED OFF\n");
 
-        sleep(5);
+        sleep(1);
         
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
