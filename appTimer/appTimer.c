@@ -65,7 +65,7 @@ bool appTimer(uint32 ulEpoch)
         }
 
         // Increment by 1 because calender days start from 1 january.
-        ulDay ++; 
+        ulDay++; 
 
         // Decrement the number of days as per number of days in each month.
         for (unIndex = MONTH_START; unIndex <= MONTH; unIndex++)

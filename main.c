@@ -64,7 +64,7 @@ int main()
 
         ulEpochIST = ulEpoch + TIME_DIFF_IST;
 
-        if (appTimer(ulEpochIST) == false)
+        if (false == appTimer(ulEpochIST))
         {
             printf("Epoch Time is Zero.");
         }
@@ -76,7 +76,7 @@ int main()
         printf("PST (-7:00)\n");
         printf("-----------------------\n");
 
-        if (appTimer(ulEpochPST) == false)
+        if (false == appTimer(ulEpochPST))
         {
             printf("Epoch Time is Zero.");
         }
