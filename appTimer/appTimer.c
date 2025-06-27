@@ -22,6 +22,7 @@
 //***************************** Local Variables ********************************
 
 //****************************** Local Functions *******************************
+static bool AppTimerDisplayTimeDate(uint32 ulEpoch);
 
 //*********************************.AppTimer.***********************************
 // Purpose : Display date and time in UTC,GST,PST.
@@ -91,7 +92,7 @@ bool AppTimer(uint32 ulEpoch)
 // Return  : blResult
 // Notes   : None
 //****************************************************************************** 
-bool AppTimerDisplayTimeDate(uint32 ulEpoch)
+static bool AppTimerDisplayTimeDate(uint32 ulEpoch)
 {
     uint32 ulYear    = 0;
     uint32 ulMonth   = 0;
