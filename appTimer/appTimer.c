@@ -1,4 +1,4 @@
-//******************************** AppTimer ************************************
+//******************************** appTimer ************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
@@ -23,14 +23,75 @@
 
 //****************************** Local Functions *******************************
 
-//******************************.appTimer.***********************************
+//*********************************.AppTimer.***********************************
+// Purpose : Display date and time in UTC,GST,PST.
+// Inputs  : ulEpoch - Epoch time.
+// Outputs : None
+// Return  : blResult
+// Notes   : None
+//******************************************************************************
+bool AppTimer(uint32 ulEpoch)
+{
+    uint32 ulEpochPST = 0;
+    uint32 ulEpochIST = 0;
+    uint32 ulEpochUTC = 0;
+    bool blResult    = true;
+
+    if (0 == ulEpoch)
+    {
+        blResult = false;
+    }
+    else
+    {
+        ulEpochUTC = ulEpoch;
+
+        printf("UTC (0:0)\n");
+        printf("-----------------------\n");
+
+        if (AppTimerDisplayTimeDate(ulEpochUTC) == false)
+        {
+            printf("Epoch Time is Zero.");
+        }
+        
+        printf("Epoch  : %ld\n",ulEpoch);
+
+        //IST
+        printf("\n");
+        printf("IST (+5:30)\n");
+        printf("-----------------------\n");
+
+        ulEpochIST = ulEpoch + TIME_DIFF_IST;
+
+        if (AppTimerDisplayTimeDate(ulEpochIST) == false)
+        {
+            printf("Epoch Time is Zero.");
+        }
+
+        //PST
+        ulEpochPST = ulEpoch - TIME_DIFF_PST;
+        
+        printf("\n");
+        printf("PST (-7:00)\n");
+        printf("-----------------------\n");
+
+        if (AppTimerDisplayTimeDate(ulEpochPST) == false)
+        {
+            printf("Epoch Time is Zero.");
+        }
+        blResult = true;
+    }
+
+    return blResult;
+}
+
+//*************************.appTimerDisplayTimeDate.****************************
 // Purpose : Display date and time.
 // Inputs  : ulEpoch - Epoch time.
 // Outputs : None
 // Return  : blResult
 // Notes   : None
 //****************************************************************************** 
-bool appTimer(uint32 ulEpoch)
+bool AppTimerDisplayTimeDate(uint32 ulEpoch)
 {
     uint32 ulYear    = 0;
     uint32 ulMonth   = 0;
@@ -156,6 +217,7 @@ bool appTimer(uint32 ulEpoch)
         printf("\nDate  : %02ld/%02ld/%02ld\n",ulDay,ulMonth,ulYear);
 
         blResult = true;
+
     }
 
     return blResult;

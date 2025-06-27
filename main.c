@@ -4,7 +4,8 @@
 //******************************************************************************
 //
 // File    : main.c
-// Summary : Display date and time in UTC,IST,PST.
+// Summary : Display date and time in UTC,IST,PST and also 
+//           printf "LED ON" "LED OFF" with a 1-second.
 // Note    : None
 // Author  : Surya Santhosh
 // Day     : 19/June/2025
@@ -27,7 +28,7 @@
 //****************************** Local Functions *******************************
 
 //******************************.mainFunction.**********************************
-// Purpose : Print date and time in UTC,IST,PST.
+// Purpose : Print date and time in UTC,IST,PST and LED ON, LED OFF.
 // Inputs  : none
 // Outputs : none
 // Return  : 0
@@ -36,9 +37,6 @@
 int main()
 {
     uint32 ulEpoch = 0;
-    uint32 ulEpochPST = 0;
-    uint32 ulEpochIST = 0;
-    uint32 ulEpochUTC = 0;
 
     while (true)
     {
@@ -46,42 +44,28 @@ int main()
 
         ulEpoch = time(&ulTime);
 
-        //UTC
-        ulEpochUTC = ulEpoch;
-
-        printf("UTC (0:0)\n");
-        printf("-----------------------\n");
-
-        if (appTimer(ulEpochUTC) == false)
+        // Print date and time in UTC,IST,PST. 
+        if (AppTimer(ulEpoch) == false)
         {
             printf("Epoch Time is Zero.");
         }
+
+        printf("\nLED ON\n");
+
+        sleep(1);
         
-        printf("Epoch  : %ld\n",ulEpoch);
+        printf("\x1b[H"); // Move Cursor to top-left
+        printf("\x1b[J"); // clear screen
 
-        //IST
-        printf("\n");
-        printf("IST (+5:30)\n");
-        printf("-----------------------\n");
+        ulEpoch = time(&ulTime);
 
-        ulEpochIST = ulEpoch + TIME_DIFF_IST;
-
-        if (appTimer(ulEpochIST) == false)
+        // Print date and time in UTC,IST,PST. 
+        if (AppTimer(ulEpoch) == false)
         {
             printf("Epoch Time is Zero.");
         }
 
-        //PST
-        ulEpochPST = ulEpoch - TIME_DIFF_PST;
-        
-        printf("\n");
-        printf("PST (-7:00)\n");
-        printf("-----------------------\n");
-
-        if (appTimer(ulEpochPST) == false)
-        {
-            printf("Epoch Time is Zero.");
-        }
+        printf("\nLED OFF\n");
 
         sleep(1);
         
@@ -92,5 +76,4 @@ int main()
 
     return 0;
 }
-
 // EOF

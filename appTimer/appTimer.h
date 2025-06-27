@@ -41,7 +41,8 @@
 //***************************** Global Variables ******************************* 
 
 //**************************** Forward Declarations **************************** 
-bool appTimer(uint32 ulEpoch);
+bool AppTimer(uint32 ulEpoch);
+bool AppTimerDisplayTimeDate(uint32 ulEpoch);
 
 //*********************** Inline Method Implementations ************************ 
 
