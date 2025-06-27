@@ -2,14 +2,11 @@
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
-//
 // File    : main.c
-// Summary : Display date and time in UTC,IST,PST and also 
-//           printf "LED ON" "LED OFF" with a 1-second.
+// Summary : Display date and time in UTC,IST,PST and "LED ON" "LED OFF".
 // Note    : None
 // Author  : Surya Santhosh
 // Day     : 19/June/2025
-//
 //******************************************************************************
 
 //******************************* Include Files ********************************
@@ -52,7 +49,7 @@ int main()
 
         printf("\nLED ON\n");
 
-        sleep(1);
+        sleep(5);
         
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
@@ -67,7 +64,7 @@ int main()
 
         printf("\nLED OFF\n");
 
-        sleep(1);
+        sleep(5);
         
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
