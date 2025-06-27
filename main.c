@@ -2,13 +2,11 @@
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
-//
 // File    : main.c
 // Summary : Display date and time in UTC,IST,PST.
 // Note    : None
 // Author  : Surya Santhosh
 // Day     : 19/June/2025
-//
 //******************************************************************************
 
 //******************************* Include Files ********************************

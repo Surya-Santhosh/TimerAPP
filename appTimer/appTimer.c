@@ -2,13 +2,11 @@
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
-//
 // File    : appTimer.c
 // Summary : Display date and time in UTC,IST,PST.
-// Note    : appTimer.h, common.h are included.
+// Note    : None
 // Author  : Surya Santhosh
 // Date    : 19/JUN/2024
-//
 //******************************************************************************
 
 //******************************* Include Files ********************************
