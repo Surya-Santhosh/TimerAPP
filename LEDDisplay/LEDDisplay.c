@@ -18,37 +18,38 @@
 //***************************** Local Constants ********************************
 
 //***************************** Local Variables ********************************
+static uint8 sucLedStatus = 0;
 
 //****************************** Local Functions *******************************
 
 //********************************.LEDStatus.**********************************
 // Purpose : Display LED ON, LED OFF.
-// Inputs  : ulflag.
+// Inputs  : None
 // Outputs : None
 // Return  : blResult
 // Notes   : None
 //******************************************************************************
-bool LEDStatus(uint8 *pucLedStatus)
+bool LEDStatus()
 {
     bool blResult = true;
 
-    if (NULL == pucLedStatus)
+    if (CHECK_ONE < sucLedStatus)
     {
         blResult = false;
     }
     else
     {
-        if (LED_OFF == *pucLedStatus)
+        if (LED_OFF == sucLedStatus)
         {
             printf("\nLED OFF\n");
 
-            *pucLedStatus = LED_ON;
+            sucLedStatus = LED_ON;
         }
         else
         {
             printf("\nLED ON\n");
 
-            *pucLedStatus = LED_OFF;
+            sucLedStatus = LED_OFF;
         }
 
         blResult = true;

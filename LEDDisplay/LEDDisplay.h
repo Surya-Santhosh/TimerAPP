@@ -20,11 +20,12 @@
 //***************************** Global Constants ******************************* 
 #define LED_ON             (1)
 #define LED_OFF            (0)
+#define CHECK_ONE          (1)
 
 //***************************** Global Variables ******************************* 
 
 //**************************** Forward Declarations **************************** 
-bool LEDStatus(uint8 *pucLedStatus);
+bool LEDStatus();
 
 //*********************** Inline Method Implementations ************************ 
 
