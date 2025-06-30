@@ -14,6 +14,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "appTimer.h"
+#include "LEDDisplay.h"
 #include "common.h"
 
 //******************************* Local Types **********************************
@@ -34,6 +35,7 @@
 int main()
 {
     uint32 ulEpoch = 0;
+    uint8 ulLedStatus = 0; 
 
     while (true)
     {
@@ -41,20 +43,11 @@ int main()
 
         ulEpoch = time(&ulTime);
 
-        // Print date and time in UTC,IST,PST. 
-        if (false == AppTimer(ulEpoch))
+        // To print LED ON, LED OFF.
+        if (false == LEDStatus(&ulLedStatus))
         {
-            printf("Epoch Time is Zero.");
+            printf("Invalid");
         }
-
-        printf("\nLED ON\n");
-
-        sleep(1);
-        
-        printf("\x1b[H"); // Move Cursor to top-left
-        printf("\x1b[J"); // clear screen
-
-        ulEpoch = time(&ulTime);
 
         // Print date and time in UTC,IST,PST. 
         if (false == AppTimer(ulEpoch))
@@ -62,10 +55,7 @@ int main()
             printf("Epoch Time is Zero.");
         }
 
-        printf("\nLED OFF\n");
-
         sleep(1);
-        
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
     }
