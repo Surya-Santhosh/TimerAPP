@@ -1,9 +1,9 @@
-//******************************* AppTimer *************************************
+//******************************* TimerApp *************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
 // File    : main.c
-// Summary : Display date and time in UTC,IST,PST and "LED ON" "LED OFF".
+// Summary : Display date and time in UTC,IST,PST and LED ON and LED OFF.
 // Note    : None
 // Author  : Surya Santhosh
 // Day     : 19/June/2025
@@ -26,7 +26,7 @@
 //****************************** Local Functions *******************************
 
 //******************************.mainFunction.**********************************
-// Purpose : Print date and time in UTC,IST,PST and LED ON, LED OFF.
+// Purpose : Print date and time in UTC,IST,PST and LED ON and LED OFF.
 // Inputs  : none
 // Outputs : none
 // Return  : 0
@@ -43,18 +43,16 @@ int main()
         ulEpoch = time(&ulTime);
 
         // To print LED ON, LED OFF.
-        if (false == LEDStatus())
-        {
-            printf("Invalid");
-        }
+        LEDStatus();
 
         // Print date and time in UTC,IST,PST. 
-        if (false == AppTimer(ulEpoch))
+        if (false == AppTimerDisplayUTCISTPST(ulEpoch))
         {
             printf("Epoch Time is Zero.");
         }
 
         sleep(1);
+
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
     }

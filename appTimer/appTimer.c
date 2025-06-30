@@ -1,16 +1,15 @@
-//******************************** AppTimer ************************************
+//******************************** appTimer ************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
 // File    : appTimer.c
-// Summary : Display date and time in UTC,IST,PST.
+// Summary : Display date and time in UTC, IST, PST.
 // Note    : None
 // Author  : Surya Santhosh
 // Date    : 19/JUN/2024
 //******************************************************************************
 
 //******************************* Include Files ********************************
-#include "common.h"
 #include "appTimer.h"
 
 //******************************* Local Types **********************************
@@ -22,14 +21,14 @@
 //****************************** Local Functions *******************************
 static bool AppTimerDisplayTimeDate(uint32 ulEpoch);
 
-//*********************************.AppTimer.***********************************
-// Purpose : Display date and time in UTC,GST,PST.
+//**************************.AppTimerDisplayUTCISTPST.**************************
+// Purpose : Display date and time in UTC, GST, PST.
 // Inputs  : ulEpoch - Epoch time.
 // Outputs : None
 // Return  : blResult
 // Notes   : None
 //******************************************************************************
-bool AppTimer(uint32 ulEpoch)
+bool AppTimerDisplayUTCISTPST(uint32 ulEpoch)
 {
     uint32 ulEpochPST = 0;
     uint32 ulEpochIST = 0;
@@ -84,7 +83,7 @@ bool AppTimer(uint32 ulEpoch)
     return blResult;
 }
 
-//*************************.appTimerDisplayTimeDate.****************************
+//*************************.AppTimerDisplayTimeDate.****************************
 // Purpose : Display date and time.
 // Inputs  : ulEpoch - Epoch time.
 // Outputs : None

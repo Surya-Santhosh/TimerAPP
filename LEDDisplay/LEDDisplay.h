@@ -1,26 +1,21 @@
-//******************************* AppTimer *************************************
+//****************************** LEDDisplay ************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved 
 //****************************************************************************** 
 //
-// Summary : Display LED ON, LED OFF with a 1-second delay.
+// Summary : Display LED ON and LED OFF.
 // Note    : None
 // 
 //****************************************************************************** 
 #ifndef _LEDDISPLAY_H_
-#define _LEDDISPLAY_H
+#define _LEDDISPLAY_H_
 
 //******************************* Include Files ********************************
-#include <stdbool.h>
-#include <stdio.h>
 #include "common.h"
 
 //******************************* Global Types ********************************* 
 
 //***************************** Global Constants ******************************* 
-#define LED_ON             (1)
-#define LED_OFF            (0)
-#define CHECK_ONE          (1)
 
 //***************************** Global Variables ******************************* 
 
@@ -30,5 +25,5 @@ bool LEDStatus();
 //*********************** Inline Method Implementations ************************ 
 
 #endif 
-// _APPTIMER_H_ 
+// _LEDDISPLAY_H_ 
 // EOF 
