@@ -35,7 +35,7 @@
 int main()
 {
     uint32 ulEpoch = 0;
-    uint8 ulLedStatus = 0; 
+    uint8 ucLedStatus = 0; 
 
     while (true)
     {
@@ -44,7 +44,7 @@ int main()
         ulEpoch = time(&ulTime);
 
         // To print LED ON, LED OFF.
-        if (false == LEDStatus(&ulLedStatus))
+        if (false == LEDStatus(&ucLedStatus))
         {
             printf("Invalid");
         }

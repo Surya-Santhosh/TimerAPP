@@ -24,7 +24,7 @@
 //***************************** Global Variables ******************************* 
 
 //**************************** Forward Declarations **************************** 
-bool LEDStatus(uint8 *ulflag);
+bool LEDStatus(uint8 *pucLedStatus);
 
 //*********************** Inline Method Implementations ************************ 
 

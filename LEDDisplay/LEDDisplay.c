@@ -28,27 +28,27 @@
 // Return  : blResult
 // Notes   : None
 //******************************************************************************
-bool LEDStatus(uint8 *ulLedStatus)
+bool LEDStatus(uint8 *pucLedStatus)
 {
     bool blResult = true;
 
-    if (NULL == ulLedStatus)
+    if (NULL == pucLedStatus)
     {
         blResult = false;
     }
     else
     {
-        if (LED_OFF == *ulLedStatus)
+        if (LED_OFF == *pucLedStatus)
         {
             printf("\nLED OFF\n");
 
-            *ulLedStatus = LED_ON;
+            *pucLedStatus = LED_ON;
         }
         else
         {
             printf("\nLED ON\n");
 
-            *ulLedStatus = LED_OFF;
+            *pucLedStatus = LED_OFF;
         }
 
         blResult = true;
