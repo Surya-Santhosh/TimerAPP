@@ -3,3 +3,4 @@
 *.s
 *.vscode
 *.txt
+*AppTimerBinary #binary executable file.

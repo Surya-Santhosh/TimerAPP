@@ -1,1 +1,1 @@
-Program to display date and time in UTC,IST,PST in every seconds.
+Program to display date and time in UTC,IST,PST and LED ON, LED OFF in every seconds.

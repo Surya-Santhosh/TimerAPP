@@ -1,9 +1,9 @@
-//******************************* AppTimer *************************************
+//********************************** main **************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
 // File    : main.c
-// Summary : Display date and time in UTC,IST,PST.
+// Summary : Display date and time in UTC,IST,PST and LED ON and LED OFF.
 // Note    : None
 // Author  : Surya Santhosh
 // Day     : 19/June/2025
@@ -14,6 +14,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "appTimer.h"
+#include "LEDDisplay.h"
 #include "common.h"
 
 //******************************* Local Types **********************************
@@ -25,7 +26,7 @@
 //****************************** Local Functions *******************************
 
 //******************************.mainFunction.**********************************
-// Purpose : Print date and time in UTC,IST,PST.
+// Purpose : Print date and time in UTC,IST,PST and LED ON and LED OFF.
 // Inputs  : none
 // Outputs : none
 // Return  : 0
@@ -33,10 +34,7 @@
 //******************************************************************************
 int main()
 {
-    uint32 ulEpoch = 0;
-    uint32 ulEpochPST = 0;
-    uint32 ulEpochIST = 0;
-    uint32 ulEpochUTC = 0;
+    uint32 ulEpoch = 0; 
 
     while (true)
     {
@@ -44,39 +42,11 @@ int main()
 
         ulEpoch = time(&ulTime);
 
-        //UTC
-        ulEpochUTC = ulEpoch;
+        // To print LED ON, LED OFF.
+        LEDStatus();
 
-        printf("UTC (0:0)\n");
-        printf("-----------------------\n");
-
-        if (false == appTimer(ulEpochUTC))
-        {
-            printf("Epoch Time is Zero.");
-        }
-        
-        printf("Epoch  : %lu\n",ulEpoch);
-
-        //IST
-        printf("\n");
-        printf("IST (+5:30)\n");
-        printf("-----------------------\n");
-
-        ulEpochIST = ulEpoch + TIME_DIFF_IST;
-
-        if (false == appTimer(ulEpochIST))
-        {
-            printf("Epoch Time is Zero.");
-        }
-
-        //PST
-        ulEpochPST = ulEpoch - TIME_DIFF_PST;
-        
-        printf("\n");
-        printf("PST (-7:00)\n");
-        printf("-----------------------\n");
-
-        if (false == appTimer(ulEpochPST))
+        // Print date and time in UTC,IST,PST. 
+        if (false == AppTimerTimeConverter(ulEpoch))
         {
             printf("Epoch Time is Zero.");
         }
@@ -89,5 +59,4 @@ int main()
 
     return 0;
 }
-
 // EOF

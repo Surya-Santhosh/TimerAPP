@@ -1,4 +1,4 @@
-//******************************8*** TimerApp **********************************
+//********************************** AppTimer **********************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved 
 //****************************************************************************** 
@@ -11,12 +11,12 @@
 #define _COMMON_H_ 
 
 //******************************* Include Files ******************************** 
+#include <stdio.h>
+#include <stdbool.h>
 
 //******************************* Global Types *********************************
 typedef unsigned long uint32;
 typedef unsigned short uint16;
-typedef signed char int8;
-typedef unsigned char uint8;
 
 //***************************** Global Constants ******************************* 
 
@@ -26,5 +26,6 @@ typedef unsigned char uint8;
 
 //*********************** Inline Method Implementations ************************ 
 
-#endif // _COMMON_H_ 
+#endif 
+// _COMMON_H_ 
 // EOF 
