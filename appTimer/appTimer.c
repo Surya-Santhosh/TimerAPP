@@ -28,7 +28,7 @@ static bool AppTimerDisplayTimeDate(uint32 ulEpoch);
 // Return  : blResult
 // Notes   : None
 //******************************************************************************
-bool AppTimerDisplayUTCISTPST(uint32 ulEpoch)
+bool AppTimerTimeConverter(uint32 ulEpoch)
 {
     uint32 ulEpochPST = 0;
     uint32 ulEpochIST = 0;

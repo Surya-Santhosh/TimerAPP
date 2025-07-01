@@ -41,7 +41,7 @@
 //***************************** Global Variables ******************************* 
 
 //**************************** Forward Declarations **************************** 
-bool AppTimerDisplayUTCISTPST(uint32 ulEpoch);
+bool AppTimerTimeConverter(uint32 ulEpoch);
 
 //*********************** Inline Method Implementations ************************ 
 

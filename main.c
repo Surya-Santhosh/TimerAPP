@@ -1,4 +1,4 @@
-//******************************* TimerApp *************************************
+//********************************** main **************************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved
 //******************************************************************************
@@ -46,7 +46,7 @@ int main()
         LEDStatus();
 
         // Print date and time in UTC,IST,PST. 
-        if (false == AppTimerDisplayUTCISTPST(ulEpoch))
+        if (false == AppTimerTimeConverter(ulEpoch))
         {
             printf("Epoch Time is Zero.");
         }
