@@ -1,19 +1,23 @@
 cmake_minimum_required(VERSION 3.10)
-set(CMAKE_C_STANDARD 17)
 project(AppTimer)
 
-# Add the folders for header files
-include_directories(${CMAKE_SOURCE_DIR} appTimer LEDDisplay)
+include(ExternalProject)
 
-# List all source files
-set(SOURCES main.c appTimer/appTimer.c LEDDisplay/LEDDisplay.c)
+# Using gcc compiler.
+ExternalProject_Add(AppTimer_gcc
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/appTimer_gcc
+    BINARY_DIR ${CMAKE_BINARY_DIR}/build_gcc
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/install
+    INSTALL_COMMAND "" 
+)
 
-# List executable files in release folder
-add_executable(AppTimer ${SOURCES})
-target_compile_options(AppTimer PRIVATE -Wall -Wextra -Werror)
-set_target_properties(AppTimer PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/release)
+# Raspberry Pi Cross-Compilation
+ExternalProject_Add(AppTimer_rpi
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/appTimer_rpi
+    BINARY_DIR ${CMAKE_BINARY_DIR}/build_rpi
+    CMAKE_ARGS
+        -DCMAKE_TOOLCHAIN_FILE=${CMAKE_SOURCE_DIR}/toolchain.cmake
+        -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/install
+    INSTALL_COMMAND ""  
+)
 
-# List debug files in debug folder
-add_executable(AppTimer_Debug ${SOURCES})
-target_compile_options(AppTimer_Debug PRIVATE -g -O0 -c)
-set_target_properties(AppTimer_Debug PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/debug)
