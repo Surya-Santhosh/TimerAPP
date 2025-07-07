@@ -1,13 +1,13 @@
-Program to display date and time in UTC,IST,PST and LED ON, LED OFF in every seconds.
-
-
 # TimerApp
 
-A cross-platform C project that builds a timer application for both Linux and Raspberry Pi, using either **CMake** or **Make**.C Program to display date and time in UTC,IST,PST and LED ON, LED OFF in every seconds.
+A cross-platform C project that builds a timer application for both Linux and 
+Raspberry Pi, using either **CMake** or **Make**.C Program to display date and 
+time in UTC,IST,PST and LED ON, LED OFF in every seconds.
 
 ## Features
 
-The executable, object, Assembly files are in **release** and debug files are in **debug**.
+The executable, object, Assembly files are in **release** and debug files are in 
+**debug**.
 Cross-compilation support for Raspberry Pi (aarch64)
 
 
