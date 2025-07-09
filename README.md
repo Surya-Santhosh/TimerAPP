@@ -14,9 +14,9 @@ Cross-compilation support for Raspberry Pi (aarch64)
 ## Prerequisites
 
 **CMake** ≥ 3.10
-*** Make ***
-*** GCC *** (for Linux build)
-*** aarch64-linux-gnu-gcc *** (for Raspberry Pi cross-compilation)
+Make  
+GCC (for Linux build)  
+aarch64-linux-gnu-gcc (for Raspberry Pi cross-compilation)  
 
 
 ## Building with Make
@@ -25,12 +25,12 @@ Cross-compilation support for Raspberry Pi (aarch64)
 
 $ make linux
 
-Output: release/main.o
-        *** realease/main.s ***
-        *** release/appTimer.o ***
-        *** realease/appTimer.s ***
-        *** release/LEDDisplay.o ***
-        *** realease/LEDDisplay.s ***
+Output: release/main.o  
+         realease/main.s  
+         release/appTimer.o  
+         realease/appTimer.s  
+         release/LEDDisplay.o  
+         realease/LEDDisplay.s  
 
 
 ### 2. Linux (Debug)
@@ -38,8 +38,8 @@ Output: release/main.o
 $ make debug
 
 Output: debug/main.o
-        *** debug/appTimer.o ***
-        *** debug/LEDDisplay.o ***
+         debug/appTimer.o  
+         debug/LEDDisplay.o  
 
 
 ### 3. Raspberry Pi (Release, cross-compile)
@@ -67,8 +67,8 @@ Removes all files from release/ and debug/ folders.
 
 $ mkdir build && cd build
 
-*** $ cmake .. ***
-*** $ make ***
+$ cmake ..  
+$ make  
 
 
 ## Building with CMake
@@ -83,8 +83,8 @@ Output: release/AppTimerwithLED_rpi
 
 ### 1. Release Build
 
-*** $ cmake -B build ***
-*** $ cmake --build ***
+$ cmake -B build  
+$ cmake --build  
 
 
 
