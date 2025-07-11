@@ -7,9 +7,6 @@ ASM = $(patsubst %.c,release/%.s,$(notdir $(SRC)))
 OBJ = $(patsubst %.c,release/%.o,$(notdir $(SRC)))
 DBG = $(patsubst %.c,debug/%.o,$(notdir $(SRC)))
 WFLAGS = -Wall -Werror -Wextra 
-# LIBRARY = -Lrpi64/lib -lgpiod
-# Macro for enable led blink. 
-BUILD_FLAG = -DENABLE_LED_BLINK
 # Included directories
 INCLUDE_DIR += -IappTimer -ILEDDisplay -IGPIOControl -Irpi64/include -I.
 FOLDER = release debug

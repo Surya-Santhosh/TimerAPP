@@ -25,8 +25,11 @@
 bool LEDPrintStatus();
 
 #ifdef ENABLE_LED_BLINK
+
 bool LEDBlink(struct gpiod_line **stpline);
+
 #endif
+
 //*********************** Inline Method Implementations ************************ 
 
 #endif 
