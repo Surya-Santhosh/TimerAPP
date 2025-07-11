@@ -3,3 +3,5 @@
 *.s
 *.vscode
 *AppTimerBinary #binary executable file.
+*libgpiod
+

@@ -16,7 +16,9 @@ ExternalProject_Add(AppTimer_rpi
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/appTimer_rpi
     BINARY_DIR ${CMAKE_BINARY_DIR}/build_rpi
     CMAKE_ARGS
-        -DCMAKE_TOOLCHAIN_FILE=${CMAKE_SOURCE_DIR}/toolchain.cmake
+        -DCMAKE_SYSTEM_NAME=Linux
+        -DCMAKE_SYSTEM_PROCESSOR=arm64
+        -DCMAKE_C_COMPILER=aarch64-linux-gnu-gcc 
         -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/install
     INSTALL_COMMAND ""  
 )

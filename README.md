@@ -13,10 +13,10 @@ Cross-compilation support for Raspberry Pi (aarch64)
 
 ## Prerequisites
 
-**CMake** ≥ 3.10
-**Make**
-**GCC** (for Linux build)
-**aarch64-linux-gnu-gcc** (for Raspberry Pi cross-compilation)
+**CMake** ≥ 3.10  
+**Make**  
+**GCC** (for Linux build)  
+**aarch64-linux-gnu-gcc** (for Raspberry Pi cross-compilation)  
 
 
 ## Building with Make
@@ -25,35 +25,41 @@ Cross-compilation support for Raspberry Pi (aarch64)
 
 $ make linux
 
-Output: release/main.o
-        realease/main.s
-        release/appTimer.o
-        realease/appTimer.s
-        release/LEDDisplay.o
-        realease/LEDDisplay.s
+Output:  
+release/main.o  
+realease/main.s  
+release/appTimer.o  
+realease/appTimer.s  
+release/LEDDisplay.o  
+realease/LEDDisplay.s  
 
 
 ### 2. Linux (Debug)
 
 $ make debug
 
-Output: debug/main.o
-        debug/appTimer.o
-        debug/LEDDisplay.o
+Output:  
+debug/main.o  
+debug/appTimer.o  
+debug/LEDDisplay.o  
 
 
 ### 3. Raspberry Pi (Release, cross-compile)
 
 $ make rpi
 
-Output: release/AppTimerBinary
+Output: release/AppTimerrpi
+
+$ make rpi_ledblink
+
+Output: release/AppTimerrpiblink
 
 
 ### 5. Build All
 
 $ make all
 
-Builds both linux and rpi.
+Builds both linux and rpi rpi_ledblink.
 
 ### 6. Clean Build Artifacts
 
@@ -65,23 +71,24 @@ Removes all files from release/ and debug/ folders.
 
 ### 1. Release Build
 
-$ mkdir build && cd build
-$ cmake ..
-$ make
+$ mkdir build && cd build  
+$ make  
 
 
 ## Building with CMake
 
 ## Using gcc Compiler
+
 Output: release/AppTimerwithLED_gcc
 
 ## Using aarch64-linux-gnu-gcc
+
 Output: release/AppTimerwithLED_rpi
 
 ### 1. Release Build
 
-$ cmake -B build 
-$ cmake --build
+$ cmake -B build  
+$ cmake --build  
 
 
 
