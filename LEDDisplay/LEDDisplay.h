@@ -24,7 +24,7 @@
 //**************************** Forward Declarations **************************** 
 bool LEDPrintStatus();
 
-#ifdef ENABLE_LED_BLINK
+#ifdef ENABLE_LED_ON_RPI
 
 bool LEDBlink(struct gpiod_line **stpline);
 

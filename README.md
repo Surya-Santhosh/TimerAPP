@@ -2,7 +2,8 @@
 
 A cross-platform C project that builds a timer application for both Linux and 
 Raspberry Pi, using either **CMake** or **Make**.C Program to display date and 
-time in UTC,IST,PST and LED ON, LED OFF in every seconds.
+time in UTC,IST,PST and LED ON, LED OFF in every seconds and LED blink with 
+delay of 840ms ON and 532ms OFF. 
 
 ## Features
 

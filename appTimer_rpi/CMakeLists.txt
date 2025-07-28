@@ -18,7 +18,7 @@ add_executable(AppTimerwithLED_rpi
 
 # List binary executable files in release folder
 
-target_compile_options(AppTimerwithLED_rpi PRIVATE -DENABLE_LED_BLINK
+target_compile_options(AppTimerwithLED_rpi PRIVATE -DENABLE_LED_ON_RPI
                          -Wall -Wextra -Werror -fanalyzer)
 
 target_link_directories(AppTimerwithLED_rpi PRIVATE 

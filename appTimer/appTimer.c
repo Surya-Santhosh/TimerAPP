@@ -51,7 +51,7 @@ bool AppTimerTimeConverter(uint32 ulEpoch)
             printf("Epoch Time is Zero.");
         }
         
-        printf("Epoch  : %lu\n",ulEpoch);
+        printf("Epoch  : %lu\n", ulEpoch);
 
         //IST
         printf("\n");
@@ -202,7 +202,7 @@ static bool AppTimerDisplayTimeDate(uint32 ulEpoch)
         ulEpoch %= (SECONDS);
         ulSeconds = ulEpoch;
 
-        printf("Time  : %02lu:%02lu:%02lu ",ulHour,ulMinute,ulSeconds);
+        printf("Time  : %02lu:%02lu:%02lu ", ulHour, ulMinute, ulSeconds);
 
         if (DAY_HOURS <= ulHour)
         {
@@ -213,7 +213,7 @@ static bool AppTimerDisplayTimeDate(uint32 ulEpoch)
             printf("AM");
         }
 
-        printf("\nDate  : %02lu/%02lu/%02lu\n",ulDay,ulMonth,ulYear);
+        printf("\nDate  : %02lu/%02lu/%02lu\n", ulDay, ulMonth, ulYear);
 
         blResult = true;
     }

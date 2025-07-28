@@ -22,43 +22,43 @@
 
 //******************************.GPIOControlSet.********************************
 // Purpose : Initialize GPIO chip and line, Set line as output.
-// Inputs  : stpchip - GPIO chip
-//         : stpline - GPIO line
+// Inputs  : ppstchip - GPIO chip
+//         : ppstline - GPIO line
 // Outputs : None
 // Return  : blResult
 // Notes   : None
 //******************************************************************************
-bool GPIOControlSet(struct gpiod_chip **stpchip, 
-                    struct gpiod_line **stpline)
+bool GPIOControlSet(struct gpiod_chip **ppstchip, 
+                    struct gpiod_line **ppstline)
 {
-    uint8 cState;
     bool blResult = true;
+    uint8 cState = 0;
 
-    *stpchip = gpiod_chip_open_by_name("gpiochip0");
+    *ppstchip = gpiod_chip_open_by_name("gpiochip0");
 
-    if (!*stpchip)
+    if (!*ppstchip)
     {
         printf("Failed to find gpio Chip.");
 
         blResult = false;
     }
 
-    *stpline = gpiod_chip_get_line(*stpchip,GPIO_LINE);
+    *ppstline = gpiod_chip_get_line(*ppstchip, GPIO_LINE);
 
-    if(!*stpline)
+    if(!*ppstline)
     {
         printf("Failed to find gpioline.");
-        gpiod_chip_close(*stpchip);
+        gpiod_chip_close(*ppstchip);
 
         blResult = false;
     }
 
-    cState = gpiod_line_request_output(*stpline,"LED Blink", 0);
+    cState = gpiod_line_request_output(*ppstline, "LED Blink", 0);
     
     if(0 > cState)
     {
         printf("Failed to request gpio line as output.");
-        gpiod_chip_close(*stpchip);
+        gpiod_chip_close(*ppstchip);
 
         blResult = false;
     }
@@ -67,17 +67,17 @@ bool GPIOControlSet(struct gpiod_chip **stpchip,
 }
 //***************************.GPIOControlRelease.*******************************
 // Purpose : Release GPIO chip and line.
-// Inputs  : stpchip - GPIO chip
-//         : stpline - GPIO line
+// Inputs  : ppstchip - GPIO chip
+//         : ppstline - GPIO line
 // Outputs : None
 // Return  : true
 // Notes   : None
 //******************************************************************************
-bool GPIOControlRelease(struct gpiod_chip **stpchip,
-                        struct gpiod_line **stpline)
+bool GPIOControlRelease(struct gpiod_chip **ppstchip,
+                        struct gpiod_line **ppstline)
 {
-    gpiod_line_release(*stpline);
-    gpiod_chip_close(*stpchip);
+    gpiod_line_release(*ppstline);
+    gpiod_chip_close(*ppstchip);
 
     return true;
 }

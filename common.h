@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
-#include <stdio.h>
 #include <time.h>
 
 //******************************* Global Types *********************************

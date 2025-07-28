@@ -14,7 +14,7 @@
 #include "appTimer.h"
 #include "LEDDisplay.h"
 
-#ifdef ENABLE_LED_BLINK
+#ifdef ENABLE_LED_ON_RPI
 
 #include "GPIOControl.h"
 
@@ -39,9 +39,10 @@
 int main()
 {
     uint32 ulEpoch = 0; 
+    time_t ulTime = 0;
 
     // Set GPIO.
-    #ifdef ENABLE_LED_BLINK
+    #ifdef ENABLE_LED_ON_RPI
 
     struct gpiod_chip *stpchip = NULL;
     struct gpiod_line *stpline = NULL;
@@ -52,8 +53,6 @@ int main()
     
     while (true)
     {
-        time_t ulTime;
-
         ulEpoch = time(&ulTime);
 
         // Print date and time in UTC,IST,PST. 
@@ -65,7 +64,7 @@ int main()
         // LED Status Print with delay of 840ms ON and 532ms OFF.
         LEDPrintStatus();
 
-        #ifdef ENABLE_LED_BLINK
+        #ifdef ENABLE_LED_ON_RPI
 
         // LED blink with delay of 840ms ON and 532ms OFF.
         LEDBlink(&stpline);
@@ -77,7 +76,7 @@ int main()
     }
 
     // Release GPIO.
-    #ifdef ENABLE_LED_BLINK
+    #ifdef ENABLE_LED_ON_RPI
 
     GPIOControlRelease(&stpchip, &stpline);
 
