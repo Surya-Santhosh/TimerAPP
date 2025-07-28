@@ -59,20 +59,20 @@ bool LEDPrintStatus()
 //******************************************************************************
 #ifdef ENABLE_LED_ON_RPI
 
-bool LEDBlink(struct gpiod_line **stpline)
+bool LEDBlink(struct gpiod_line **pstline)
 {
     static bool sblLedStatus = true;
 
     if (true == sblLedStatus)
     {
-        gpiod_line_set_value(*stpline, sblLedStatus);
+        gpiod_line_set_value(*pstline, sblLedStatus);
 
         //LED ON with delay 840ms.
         sblLedStatus = false;
     }
     else
     {
-        gpiod_line_set_value(*stpline, sblLedStatus);
+        gpiod_line_set_value(*pstline, sblLedStatus);
 
         //LED OFF with delay 532ms.
         sblLedStatus = true;

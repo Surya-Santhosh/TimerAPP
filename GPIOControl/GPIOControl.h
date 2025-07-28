@@ -23,10 +23,10 @@
 //***************************** Global Variables ******************************* 
 
 //**************************** Forward Declarations **************************** 
-bool GPIOControlSet(struct gpiod_chip **stpchip, 
-                    struct gpiod_line **stpline);
-bool GPIOControlRelease(struct gpiod_chip **stpchip, 
-                        struct gpiod_line **stpline);
+bool GPIOControlSet(struct gpiod_chip **pstchip, 
+                    struct gpiod_line **pstline);
+bool GPIOControlRelease(struct gpiod_chip **pstchip, 
+                        struct gpiod_line **pstline);
 
 //*********************** Inline Method Implementations ************************ 
 

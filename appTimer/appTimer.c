@@ -220,4 +220,5 @@ static bool AppTimerDisplayTimeDate(uint32 ulEpoch)
 
     return blResult;
 }
+
 // EOF

@@ -44,10 +44,10 @@ int main()
     // Set GPIO.
     #ifdef ENABLE_LED_ON_RPI
 
-    struct gpiod_chip *stpchip = NULL;
-    struct gpiod_line *stpline = NULL;
+    struct gpiod_chip *pstchip = NULL;
+    struct gpiod_line *pstline = NULL;
 
-    GPIOControlSet(&stpchip, &stpline);
+    GPIOControlSet(&pstchip, &pstline);
 
     #endif
     
@@ -67,7 +67,7 @@ int main()
         #ifdef ENABLE_LED_ON_RPI
 
         // LED blink with delay of 840ms ON and 532ms OFF.
-        LEDBlink(&stpline);
+        LEDBlink(&pstline);
 
         #endif
 
@@ -78,7 +78,7 @@ int main()
     // Release GPIO.
     #ifdef ENABLE_LED_ON_RPI
 
-    GPIOControlRelease(&stpchip, &stpline);
+    GPIOControlRelease(&pstchip, &pstline);
 
     #endif
 
