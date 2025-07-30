@@ -17,7 +17,7 @@ add_executable(AppTimerwithLED_gcc
 # List executable files in release folder
 
 target_compile_options(AppTimerwithLED_gcc PRIVATE 
-                       -Wall -Wextra -Werror -fanalyzer)
+                       -g -O0 -Wall -Wextra -Werror -fanalyzer)
 
 set_target_properties(AppTimerwithLED_gcc PROPERTIES 
                       RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/../release)

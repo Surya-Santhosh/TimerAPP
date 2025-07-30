@@ -4,4 +4,4 @@
 *.vscode
 *AppTimerBinary #binary executable file.
 *libgpiod
-
+*.txt

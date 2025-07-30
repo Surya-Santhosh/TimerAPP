@@ -19,7 +19,7 @@ add_executable(AppTimerwithLED_rpi
 # List binary executable files in release folder
 
 target_compile_options(AppTimerwithLED_rpi PRIVATE -DENABLE_LED_ON_RPI
-                         -Wall -Wextra -Werror -fanalyzer)
+                         -g -O0 -Wall -Wextra -Werror -fanalyzer)
 
 target_link_directories(AppTimerwithLED_rpi PRIVATE 
                         ${CMAKE_SOURCE_DIR}/../rpi64/lib)
