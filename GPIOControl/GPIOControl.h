@@ -16,7 +16,7 @@
 //******************************* Global Types ********************************* 
 
 //***************************** Global Constants ******************************* 
-#define GPIO_LINE             (5)
+#define GPIO_LINE             (22)
 #define LED_ON                (1)
 #define LED_OFF               (0)
 
