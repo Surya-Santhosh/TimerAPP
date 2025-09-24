@@ -1,14 +1,14 @@
-//****************************** LEDDisplay ************************************
+//****************************** GPIOControl ***********************************
 // Copyright (c) 2025 Trenser Technology Solutions
 // All Rights Reserved 
 //****************************************************************************** 
 //
-// Summary : LED blink with delay of 840ms ON and 532ms OFF.
+// Summary : Initialize GPIO chip and line, Set line as output.
 // Note    : None
 // 
 //****************************************************************************** 
-#ifndef _LEDDISPLAY_H_
-#define _LEDDISPLAY_H_
+#ifndef _GPIOCONTROL_H_
+#define _GPIOCONTROL_H_
 
 //******************************* Include Files ********************************
 #include "common.h"
@@ -16,22 +16,20 @@
 //******************************* Global Types ********************************* 
 
 //***************************** Global Constants ******************************* 
-#define DELAY_LED_ON        (840000)
-#define DELAY_LED_OFF       (542000)
+#define GPIO_LINE             (22)
+#define LED_ON                (1)
+#define LED_OFF               (0)
 
 //***************************** Global Variables ******************************* 
 
 //**************************** Forward Declarations **************************** 
-bool LEDPrintStatus();
-
-#ifdef ENABLE_LED_ON_RPI
-
-bool LEDBlink(struct gpiod_line **pstline);
-
-#endif
+bool GPIOControlSet(struct gpiod_chip **pstchip, 
+                    struct gpiod_line **pstline);
+bool GPIOControlRelease(struct gpiod_chip **pstchip, 
+                        struct gpiod_line **pstline);
 
 //*********************** Inline Method Implementations ************************ 
 
 #endif 
-// _LEDDISPLAY_H_ 
+// _GPIOCONTROL_H_ 
 // EOF 

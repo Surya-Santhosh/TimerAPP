@@ -3,19 +3,22 @@
 // All Rights Reserved
 //******************************************************************************
 // File    : main.c
-// Summary : Display date and time in UTC,IST,PST and LED ON and LED OFF.
+// Summary : Display date and time in UTC,IST,PST and 
+//           LED blink with delay of 840ms ON and 532ms OFF.
 // Note    : None
 // Author  : Surya Santhosh
 // Day     : 19/June/2025
 //******************************************************************************
 
 //******************************* Include Files ********************************
-#include <stdio.h>
-#include <time.h>
-#include <unistd.h>
 #include "appTimer.h"
 #include "LEDDisplay.h"
-#include "common.h"
+
+#ifdef ENABLE_LED_ON_RPI
+
+#include "GPIOControl.h"
+
+#endif
 
 //******************************* Local Types **********************************
 
@@ -26,7 +29,8 @@
 //****************************** Local Functions *******************************
 
 //******************************.mainFunction.**********************************
-// Purpose : Print date and time in UTC,IST,PST and LED ON and LED OFF.
+// Purpose : Print date and time in UTC, IST, PST, and LED blink with delay of 
+//           840ms ON and 532ms OFF.
 // Inputs  : none
 // Outputs : none
 // Return  : 0
@@ -35,15 +39,21 @@
 int main()
 {
     uint32 ulEpoch = 0; 
+    time_t ulTime = 0;
 
+    // Set GPIO.
+    #ifdef ENABLE_LED_ON_RPI
+
+    struct gpiod_chip *pstchip = NULL;
+    struct gpiod_line *pstline = NULL;
+
+    GPIOControlSet(&pstchip, &pstline);
+
+    #endif
+    
     while (true)
     {
-        time_t ulTime;
-
         ulEpoch = time(&ulTime);
-
-        // To print LED ON, LED OFF.
-        LEDStatus();
 
         // Print date and time in UTC,IST,PST. 
         if (false == AppTimerTimeConverter(ulEpoch))
@@ -51,11 +61,26 @@ int main()
             printf("Epoch Time is Zero.");
         }
 
-        sleep(1);
+        // LED Status Print with delay of 840ms ON and 532ms OFF.
+        LEDPrintStatus();
+
+        #ifdef ENABLE_LED_ON_RPI
+
+        // LED blink with delay of 840ms ON and 532ms OFF.
+        LEDBlink(&pstline);
+
+        #endif
 
         printf("\x1b[H"); // Move Cursor to top-left
         printf("\x1b[J"); // clear screen
     }
+
+    // Release GPIO.
+    #ifdef ENABLE_LED_ON_RPI
+
+    GPIOControlRelease(&pstchip, &pstline);
+
+    #endif
 
     return 0;
 }

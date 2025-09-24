@@ -11,12 +11,16 @@
 #define _COMMON_H_ 
 
 //******************************* Include Files ******************************** 
+#include <gpiod.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
+#include <time.h>
 
 //******************************* Global Types *********************************
-typedef unsigned long uint32;
 typedef unsigned short uint16;
+typedef signed char uint8;
+typedef unsigned long uint32;
 
 //***************************** Global Constants ******************************* 
 
